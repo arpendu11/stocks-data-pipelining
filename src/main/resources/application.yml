@@ -1,0 +1,21 @@
+server:
+  port: 8082
+
+spring:
+  main: 
+    allow-bean-definition-overriding: true
+    
+spark:
+  appName: Spark Sample Job
+  master: local[3]
+  hadoopHomeDir: D:\\winutils
+    
+kafka:
+  bootstrapServers: localhost:9092
+  group: group_json
+  topics:
+    - topic: stocks
+    - topic: stocks_profiles
+    - topic: stocks_profiles_joined
+  startingOffsets: latest
+  checkpointLocation: ./etl-from-json   
