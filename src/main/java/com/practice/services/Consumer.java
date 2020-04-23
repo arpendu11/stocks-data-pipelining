@@ -43,8 +43,8 @@ public class Consumer {
 		stockProfile.setAddress(json.findValue("address").textValue());
 		stockProfile.setRegistration(json.findValue("registration").textValue());
 		stock.setStockProfile(stockProfile);
-		mysqlRepo.save(stock);
 		postgresRepo.save(stock);
+		mysqlRepo.save(stock);
 		System.out.println("Consumed Stock Joined message: " + stock.toString());
 	}
 	

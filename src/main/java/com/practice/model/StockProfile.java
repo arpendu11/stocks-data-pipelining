@@ -1,8 +1,6 @@
 package com.practice.model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -13,10 +11,8 @@ import org.apache.spark.sql.types.StructType;
 @Entity
 @Table(name="stock_profile")
 public class StockProfile {
-
+	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
 	private String company;
 	private String profession;
 	private String sector;
@@ -76,7 +72,7 @@ public class StockProfile {
 
 	@Override
 	public String toString() {
-		return "StockProfile [id=" + id + ", company=" + company + ", profession=" + profession + ", sector=" + sector
+		return "StockProfile [company=" + company + ", profession=" + profession + ", sector=" + sector
 				+ ", address=" + address + ", registration=" + registration + "]";
 	}
 	

@@ -2,11 +2,9 @@ package com.practice.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.apache.spark.sql.types.DataTypes;
@@ -18,8 +16,6 @@ import org.apache.spark.sql.types.StructType;
 public class Stock {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
 	private String date;
 	private String company;
 	private Float open;
@@ -36,7 +32,7 @@ public class Stock {
 					DataTypes.createStructField("low", DataTypes.FloatType, false),
 					DataTypes.createStructField("volume", DataTypes.IntegerType, false), });
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "stock_profile_company", referencedColumnName = "company")
 	private StockProfile stockProfile;
 	
@@ -106,7 +102,7 @@ public class Stock {
 
 	@Override
 	public String toString() {
-		return "Stock [id=" + id + ", date=" + date + ", company=" + company + ", open=" + open + ", close=" + close
+		return "Stock [date=" + date + ", company=" + company + ", open=" + open + ", close=" + close
 				+ ", high=" + high + ", low=" + low + ", volume=" + volume + ", stockProfile=" + stockProfile + "]";
 	}
 	
